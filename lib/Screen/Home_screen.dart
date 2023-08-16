@@ -9,8 +9,10 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-const styy = TextStyle(color: Colors.black87,
-            fontWeight: FontWeight.bold,fontSize: 23);
+
+
+var iconcolor= Colors.white;
+var bsckcolor= Colors.black;
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -19,17 +21,38 @@ class _HomeScreenState extends State<HomeScreen> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          backgroundColor: bsckcolor,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: bsckcolor,
             elevation: 0,
             title:  Text("CRAZY BUY",
             style:GoogleFonts.rubikWetPaint(
-              textStyle: styy,
+              textStyle: TextStyle(color:iconcolor,
+            fontWeight: FontWeight.bold,fontSize: 23),
               
             )),
          
          actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.notification_add_outlined,color: Colors.black,size: 28,)),
+          IconButton(onPressed: (){
+            if (iconcolor ==Colors.white && bsckcolor==Colors.black){
+               
+              setState(() {
+                iconcolor=Colors.black;
+                bsckcolor=Colors.white ;
+              });
+
+              }
+              else{
+                setState(() {
+                  iconcolor=Colors.white;
+                bsckcolor=Colors.black ;
+                });
+              }
+          }, icon:  Icon(Icons.dark_mode,color:iconcolor,size: 28,)),
+          const SizedBox(
+            width: 10,
+          ),
+          IconButton(onPressed: (){}, icon:  Icon(Icons.notification_add_outlined,color:iconcolor,size: 28,)),
           const SizedBox(
             width: 10,
           ),
